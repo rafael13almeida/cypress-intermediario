@@ -54,12 +54,11 @@ describe('Tela de Login', () => {
       .should('be.visible', 'GitLab Community Edition')
   });
 
-  const login = require('../../cypress.env.json')
-  it.only('verificar login valido', () => {
-    cy.login(login.user_name, login.user_password)  
-      cy.get('h2.blank-state-welcome-title')
+  it('verificar login valido', () => {
+    cy.login()  
+    cy.get('h2.blank-state-welcome-title')
       .should('be.visible', 'Welcome to GitLab')
-  })
+  });
   
 
 });
