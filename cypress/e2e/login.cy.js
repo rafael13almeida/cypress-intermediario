@@ -47,11 +47,19 @@ describe('Tela de Login', () => {
       .should('not.be.checked')
   });
 
-  // it.only('clicar no botão "esqueceu sua senha?"', () => {
-  //   cy.get('a[href*="/users/password/new"]')
-  //     .click()
-  //     .contains('h1', 'GitLab Community Edition')
-  // });
+  it('clicar no botão "esqueceu sua senha?"', () => {
+    cy.get('a[href*="/users/password/new"]')
+      .click()
+    cy.get('h1.mb-3')
+      .should('be.visible', 'GitLab Community Edition')
+  });
+
+  const login = require('../../cypress.env.json')
+  it.only('verificar login valido', () => {
+    cy.login(login.user_name, login.user_password)  
+      cy.get('h2.blank-state-welcome-title')
+      .should('be.visible', 'Welcome to GitLab')
+  })
   
 
 });
