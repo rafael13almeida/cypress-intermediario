@@ -3,12 +3,16 @@ Cypress.Commands.add('login', (
     senha   = Cypress.env('user_password')
     ) => {
     const login = () => {
-        cy.visit('/users/sign_in')
-
+        
         cy.get('#user_login').type(usuario)
-        cy.get('#user_password').type(senha)
+        cy.get('#user_password').type(senha, { log: false })
         cy.get('input[type="submit"][value="Sign in"]').click()
-
     }
     login()
 })
+
+Cypress.Commands.add('logout', () => {
+    cy.get('.qa-user-avatar').click()
+    cy.contains('Sign out').click()
+});
+
