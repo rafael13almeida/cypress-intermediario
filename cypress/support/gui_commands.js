@@ -1,14 +1,35 @@
 Cypress.Commands.add('login', (
     usuario = Cypress.env('user_name'),
-    senha   = Cypress.env('user_password')
+    senha   = Cypress.env('user_password'),
+    { cacheSession = true } = {},
     ) => {
+
     const login = () => {
         cy.visit('/users/sign_in')
         cy.get('#user_login').type(usuario)
         cy.get('#user_password').type(senha, { log: false })
         cy.get('input[type="submit"][value="Sign in"]').click()
     }
-    login()
+
+    const validate = () => {
+        cy.visit('/')
+        cy.location('pathname', { timeout: 1000 })
+          .should('not.eq', '/users/sign_in')
+    }
+
+    const options = {
+        cacheAcrossSpecs: true,
+        validate,
+    }
+
+    if (cacheSession) {
+        cy.session(usuario, login, options)
+    
+    } else {
+        login()
+    
+    }
+    
 });
 
 Cypress.Commands.add('logout', () => {

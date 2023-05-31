@@ -1,9 +1,12 @@
-describe('Tela de Login', () => {
+describe('Login', () => {
     
   it('verificar login valido', () => {
-    cy.login()  
-    cy.get('h2.blank-state-welcome-title')
-      .should('be.visible', 'Welcome to GitLab')
+    const usuario = Cypress.env('user_name')
+    const senha = Cypress.env('user_password')
+    const options = { cacheSession: false }
+
+    cy.login(usuario, senha, options)
+    cy.get('.header-user-avatar').should('be.visible')
   });
   
 
