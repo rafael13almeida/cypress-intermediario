@@ -6,7 +6,7 @@ describe('Logout', () => {
         
     });
 
-    it('logout com sucesso', () => {
+    it('Logout com sucesso', () => {
         cy.logout()
         cy.url().should('be.equal', `${Cypress.config('baseUrl')}/users/sign_in`)
     });

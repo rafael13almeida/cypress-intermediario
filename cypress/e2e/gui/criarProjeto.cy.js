@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker'
 
-describe('criar um projeto', () => {
+describe('Criar um projeto', () => {
 
     beforeEach(() => {
         cy.login()
     });
 
-    it('Criar um projeto', () => {
+    it('Criando um projeto com sucesso', () => {
         
         const projeto = {
             nome: `project-${faker.datatype.uuid()}`,

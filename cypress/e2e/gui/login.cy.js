@@ -1,6 +1,6 @@
 describe('Login', () => {
     
-  it('verificar login valido', () => {
+  it('Verificar login valido', () => {
     const usuario = Cypress.env('user_name')
     const senha = Cypress.env('user_password')
     const options = { cacheSession: false }
