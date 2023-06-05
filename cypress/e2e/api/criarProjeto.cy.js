@@ -1,6 +1,8 @@
 import { faker } from '@faker-js/faker'
 
 describe('Criar Projeto', () => {
+
+    beforeEach(() => cy.api_deletaTodosProjetos())
     it('sucesso', () => {
 
         const projeto = {

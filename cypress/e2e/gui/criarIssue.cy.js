@@ -12,6 +12,7 @@ describe('Criando uma issue', () => {
     }
 
     beforeEach(() => {
+        cy.api_deletaTodosProjetos()
         cy.login()
         cy.gui_criarProjeto(issue.projeto)
     });
