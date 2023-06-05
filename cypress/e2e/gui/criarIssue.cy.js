@@ -14,7 +14,7 @@ describe('Criando uma issue', () => {
     beforeEach(() => {
         cy.api_deletaTodosProjetos()
         cy.login()
-        cy.gui_criarProjeto(issue.projeto)
+        cy.api_criarProjeto(issue.projeto)
     });
 
     it('Criar Issue com sucesso', () => {
