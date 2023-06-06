@@ -47,14 +47,23 @@ Cypress.Commands.add('api_criarIssue', issue => {
 })
 
 
-Cypress.Commands.add('api_criarLabel', (project_id, label) => {
+Cypress.Commands.add('api_criarLabel', (projectId, label) => {
     cy.request({
         method: 'POST',
-        url: `/api/v4/projects/${project_id}/labels`,
+        url: `/api/v4/projects/${projectId}/labels`,
         body: {
             name: label.nome,
             color: label.cor
         },
+        headers: { Authorization: accessToken }
+    })
+})
+
+Cypress.Commands.add('api_criarMilestone', (projectId, milestone) => {
+    cy.request({
+        method: 'POST',
+        url: `/api/v4/projects/${projectId}/milestones`,
+        body: { title: milestone.titulo},
         headers: { Authorization: accessToken }
     })
 })
