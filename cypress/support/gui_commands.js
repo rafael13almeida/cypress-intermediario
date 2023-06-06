@@ -54,3 +54,12 @@ Cypress.Commands.add('gui_criarIssue', issue => {
     cy.contains('Submit issue').click()
 })
 
+
+Cypress.Commands.add('gui_criarLabelIssue', label => {
+    cy.get('.qa-edit-link-labels').click()
+    cy.contains(label.nome).click()
+    cy.get('body').click()
+})
+
+
+
