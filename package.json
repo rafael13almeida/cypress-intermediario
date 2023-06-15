@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "cypress run",
-    "test open": "npx cypress open"
+    "cy:open": "npx cypress open"
   },
   
   "devDependencies": {
